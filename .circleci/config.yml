@@ -41,5 +41,24 @@ jobs:
       # run tests!
       - run: gradle test
 
-
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/<Andriod>:2
+    steps:
+      - checkout
+      
+  test:
+    docker:
+      - image: circleci/<Andriod>:2
+    steps:
+      - checkout
+      
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test
 
